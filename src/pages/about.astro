@@ -1,0 +1,232 @@
+---
+import Base from '../layouts/Base.astro';
+
+// TODO: replace with real names, roles and bios.
+const founders = [
+  {
+    initials: 'M',
+    name: 'Founder One',
+    role: 'Software & Systems',
+    bio: 'Builds the apps, automations and agent workflows that power mfort. Happiest when a prototype ships before lunch.',
+  },
+  {
+    initials: 'F',
+    name: 'Founder Two',
+    role: 'Brand & Content',
+    bio: 'Leads marketing, storytelling and social. Turns agent drafts into work with a real voice and point of view.',
+  },
+];
+
+const principles = [
+  {
+    title: 'Human judgment, always',
+    text: 'Agents propose, people decide. Every release, post and campaign passes human review before it ships.',
+  },
+  {
+    title: 'Leverage over headcount',
+    text: 'Two people with a well-tuned crew of AI agents can do the work of a much larger team, and stay small on purpose.',
+  },
+  {
+    title: 'Open about AI',
+    text: 'We say plainly that we use AI and how. No pretending, no hype — just a better way to make things.',
+  },
+  {
+    title: 'Ship, then sharpen',
+    text: 'Fast iteration beats perfect plans. We release early, listen closely, and let the feedback loop do its work.',
+  },
+];
+---
+
+<Base title="About" description="Who's behind mfort, and how a two-person studio works hand in hand with AI agents.">
+  <section class="section page-hero">
+    <div class="container">
+      <span class="eyebrow">About mfort</span>
+      <h1>A family studio for the <span class="gradient-text">agentic era</span>.</h1>
+      <p class="lead">
+        mfort is the umbrella for the projects we build together as a couple: apps, marketing experiments
+        and content. We started it because AI agents changed what two curious people can build in their spare
+        hours.
+      </p>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="container">
+      <div class="founders">
+        {
+          founders.map((f) => (
+            <article class="card founder reveal">
+              <div class="avatar" aria-hidden="true">{f.initials}</div>
+              <div>
+                <h2 class="h3">{f.name}</h2>
+                <p class="role">{f.role}</p>
+                <p class="muted">{f.bio}</p>
+              </div>
+            </article>
+          ))
+        }
+        <article class="card founder agents reveal">
+          <div class="avatar" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26"
+              ><rect x="4" y="7" width="16" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"></rect><path
+                d="M12 3v4M9 12h.01M15 12h.01M9 16h6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"></path></svg
+            >
+          </div>
+          <div>
+            <h2 class="h3">The agent crew</h2>
+            <p class="role">Research · Code · Copy · Design</p>
+            <p class="muted">
+              A rotating team of AI agents that plan, draft, build and test alongside us. They never sleep and
+              they don't get the final say.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Principles</span>
+        <h2>How we work</h2>
+      </div>
+      <div class="principles">
+        {
+          principles.map((p, i) => (
+            <div class="principle reveal">
+              <span class="idx">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{p.title}</h3>
+              <p class="muted">{p.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="container">
+      <div class="cta-line reveal">
+        <p>Curious about something we're building?</p>
+        <a class="btn btn-primary" href="/contact/">Say hello</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-hero {
+    padding-bottom: 2rem;
+  }
+  .page-hero h1 {
+    max-width: 16ch;
+  }
+  .tight {
+    padding-block: 2rem;
+  }
+  .section-head {
+    margin-bottom: 2.5rem;
+  }
+  .h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.2rem;
+  }
+  .founders {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .founder {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .founder p:last-child {
+    margin-bottom: 0;
+  }
+  .avatar {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #1a8fb0, #0d5b73);
+    box-shadow: 0 10px 30px -10px var(--accent-glow);
+  }
+  .agents {
+    border-style: dashed;
+  }
+  .agents .avatar {
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    border: 1px solid var(--border-strong);
+    box-shadow: none;
+  }
+  .role {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-text);
+    margin-bottom: 0.75rem;
+  }
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 3rem;
+  }
+  .principle {
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--border-strong);
+  }
+  .idx {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-text);
+  }
+  .principle h3 {
+    margin-top: 0.3rem;
+  }
+  .cta-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem 0 3rem;
+    border-top: 1px solid var(--border);
+  }
+  .cta-line p {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  @media (max-width: 960px) {
+    .founders {
+      grid-template-columns: 1fr;
+    }
+    .founder {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .avatar {
+      flex-shrink: 0;
+    }
+  }
+  @media (max-width: 640px) {
+    .principles {
+      grid-template-columns: 1fr;
+    }
+    .founder {
+      flex-direction: column;
+    }
+  }
+</style>

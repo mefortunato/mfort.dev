@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Not found" description="This page doesn't exist.">
+  <section class="section">
+    <div class="container nf">
+      <p class="code" aria-hidden="true">404</p>
+      <h1>Route not found.</h1>
+      <div class="log" aria-hidden="true">
+        <div><span class="p">$</span> agent.navigate(location.pathname)</div>
+        <div class="err">✗ no matching page · even our agents looked everywhere</div>
+      </div>
+      <p class="lead">The page you're looking for has moved, or it never existed.</p>
+      <a class="btn btn-primary" href="/">Back to home</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 55vh;
+    justify-content: center;
+  }
+  .code {
+    font-family: var(--font-mono);
+    font-size: clamp(4rem, 14vw, 8rem);
+    line-height: 1;
+    font-weight: 700;
+    margin: 0 0 1rem;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--accent-text);
+  }
+  .log {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg-elev);
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .p {
+    color: var(--accent-text);
+  }
+  .err {
+    color: #e5737a;
+  }
+  :global([data-theme='light']) .err {
+    color: #b3343c;
+  }
+</style>

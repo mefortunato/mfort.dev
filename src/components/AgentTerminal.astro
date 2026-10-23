@@ -1,0 +1,152 @@
+---
+// Decorative "agent session" log for the hero. Fully rendered in HTML so it reads
+// fine without JS; the script just replays it line by line.
+const lines: { kind: 'cmd' | 'out' | 'ok' | 'note'; text: string }[] = [
+  { kind: 'cmd', text: 'mfort run --brief "launch the new app"' },
+  { kind: 'out', text: '↳ planner    drafting roadmap · 6 tasks' },
+  { kind: 'out', text: '↳ builder    scaffolding app + tests' },
+  { kind: 'out', text: '↳ marketer   landing copy · 3 variants' },
+  { kind: 'out', text: '↳ creator    12 short-form clips queued' },
+  { kind: 'note', text: '◆ human review requested' },
+  { kind: 'ok', text: '✓ approved · shipping to production' },
+];
+---
+
+<div class="terminal" role="img" aria-label="Illustration: an AI agent session planning, building, marketing and creating content, then shipping after human review.">
+  <div class="bar" aria-hidden="true">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="title">agents@mfort ~ session</span>
+  </div>
+  <ol class="body" aria-hidden="true">
+    {
+      lines.map((l) => (
+        <li class={`line ${l.kind}`} data-text={l.text}>
+          {l.kind === 'cmd' && <span class="prompt">$ </span>}
+          <span class="txt">{l.text}</span>
+        </li>
+      ))
+    }
+    <li class="line cursor-line"><span class="prompt">$ </span><span class="cursor"></span></li>
+  </ol>
+</div>
+
+<style>
+  .terminal {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-strong);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--bg-elev-2) 92%, transparent), var(--bg-elev));
+    box-shadow:
+      var(--shadow),
+      0 0 80px -20px var(--accent-glow);
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: clamp(0.72rem, 1.6vw, 0.86rem);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--border-strong);
+  }
+  .dot:first-child {
+    background: #0d5b73;
+  }
+  .title {
+    margin-left: auto;
+    color: var(--text-faint);
+    font-size: 0.75rem;
+  }
+  .body {
+    list-style: none;
+    margin: 0;
+    padding: 1.1rem 1.2rem 1.3rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+  .line {
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-muted);
+  }
+  .line.cmd {
+    color: var(--text);
+  }
+  .prompt {
+    color: var(--accent-text);
+  }
+  .line.note {
+    color: #e2b857;
+  }
+  :global([data-theme='light']) .line.note {
+    color: #a06d00;
+  }
+  .line.ok {
+    color: var(--ok);
+  }
+  .cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 1.1em;
+    vertical-align: text-bottom;
+    background: var(--accent-text);
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  /* While animating, hidden lines keep their space to avoid layout shift. */
+  .terminal.playing .line.pending {
+    visibility: hidden;
+  }
+</style>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll<HTMLElement>('.terminal').forEach((term) => {
+    if (reduce) return;
+    const lines = Array.from(term.querySelectorAll<HTMLElement>('.line[data-text]'));
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+    async function play() {
+      term.classList.add('playing');
+      for (const l of lines) {
+        l.classList.add('pending');
+        l.querySelector('.txt')!.textContent = '';
+      }
+      await sleep(400);
+      for (const l of lines) {
+        const txt = l.querySelector('.txt')!;
+        const full = l.dataset.text ?? '';
+        l.classList.remove('pending');
+        if (l.classList.contains('cmd')) {
+          for (let i = 1; i <= full.length; i++) {
+            txt.textContent = full.slice(0, i);
+            await sleep(28 + Math.random() * 40);
+          }
+          await sleep(350);
+        } else {
+          txt.textContent = full;
+          await sleep(l.classList.contains('note') ? 900 : 420);
+        }
+      }
+      await sleep(5000);
+      play();
+    }
+
+    play();
+  });
+</script>
