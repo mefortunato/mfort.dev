@@ -25,7 +25,7 @@ npm run preview   # serve the built site
 | About (founder names/bios, principles) | `src/pages/about.astro` |
 | Contact | `src/pages/contact.astro` |
 | Colors, fonts, theme tokens | `src/styles/global.css` |
-| Hero "agent session" lines | `src/components/AgentTerminal.astro` |
+| Hero illustration (app / growth / social cards) | `src/components/VentureCollage.astro` |
 
 The accent color is `#0d5b73`. Dark is the default theme. The header toggle switches to light and
 remembers the choice in `localStorage`.

@@ -5,9 +5,9 @@ export const site = {
   name: 'mfort',
   legalName: 'mfort, LLC',
   url: 'https://mfort.dev',
-  tagline: 'Small studio. Big leverage.',
+  tagline: 'Small studio. Big ideas.',
   description:
-    'mfort is a two-person studio where humans and AI agents build software, grow brands, and create content.',
+    'mfort is a two-person studio building apps, growing brands, and creating content.',
   email: 'hello@mfort.dev',
 };
 

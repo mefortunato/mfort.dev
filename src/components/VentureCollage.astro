@@ -1,0 +1,292 @@
+---
+// Hero illustration: one small card per venture (app, growth, social), stacked.
+---
+
+<div
+  class="collage"
+  role="img"
+  aria-label="Illustration: a phone app screen, a marketing growth chart, and a social media post, layered together.">
+  <!-- Software & Apps -->
+  <div class="piece phone" aria-hidden="true">
+    <div class="notch"></div>
+    <p class="app-title">Today</p>
+    <ul class="tasks">
+      <li class="done"><span class="check"></span>Morning walk</li>
+      <li class="done"><span class="check"></span>Plan the week</li>
+      <li><span class="check"></span>Water the plants</li>
+      <li><span class="check"></span>Call grandma</li>
+    </ul>
+    <div class="app-btn">+ Add habit</div>
+  </div>
+
+  <!-- Digital Marketing -->
+  <div class="piece growth" aria-hidden="true">
+    <p class="g-label">Reach · 30 days</p>
+    <p class="g-value">12.4k <span class="g-delta">▲ 38%</span></p>
+    <svg viewBox="0 0 200 64" preserveAspectRatio="none" class="spark">
+      <defs>
+        <linearGradient id="spark-fill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="var(--accent-text)" stop-opacity="0.35"></stop>
+          <stop offset="1" stop-color="var(--accent-text)" stop-opacity="0"></stop>
+        </linearGradient>
+      </defs>
+      <path
+        d="M0 54 L20 50 L40 52 L60 44 L80 46 L100 36 L120 38 L140 26 L160 28 L180 16 L200 10 L200 64 L0 64 Z"
+        fill="url(#spark-fill)"></path>
+      <path
+        d="M0 54 L20 50 L40 52 L60 44 L80 46 L100 36 L120 38 L140 26 L160 28 L180 16 L200 10"
+        fill="none"
+        stroke="var(--accent-text)"
+        stroke-width="2.5"
+        stroke-linejoin="round"
+        vector-effect="non-scaling-stroke"></path>
+      <circle cx="200" cy="10" r="4" fill="var(--accent-text)"></circle>
+    </svg>
+  </div>
+
+  <!-- Social & Content -->
+  <div class="piece post" aria-hidden="true">
+    <div class="post-head">
+      <span class="avatar">m</span>
+      <span class="handle">@mfort</span>
+    </div>
+    <div class="post-img">
+      <span class="sun"></span>
+      <span class="hill hill-a"></span>
+      <span class="hill hill-b"></span>
+    </div>
+    <div class="post-meta">
+      <span>♥ 1,284</span>
+      <span>96 comments</span>
+    </div>
+    <p class="caption">Weekend project, start to finish.</p>
+  </div>
+</div>
+
+<style>
+  .collage {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    aspect-ratio: 52 / 44;
+  }
+  .piece {
+    position: absolute;
+    background: var(--bg-elev);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    box-shadow:
+      var(--shadow),
+      0 0 60px -24px var(--accent-glow);
+    animation: float 7s ease-in-out infinite;
+  }
+
+  /* Phone */
+  .phone {
+    left: 0;
+    top: 6%;
+    width: 40%;
+    padding: 1.1rem 0.9rem 1rem;
+    border-radius: 28px;
+    rotate: -5deg;
+    z-index: 2;
+  }
+  .notch {
+    width: 36%;
+    height: 6px;
+    margin: 0 auto 0.9rem;
+    border-radius: 99px;
+    background: var(--border-strong);
+  }
+  .app-title {
+    font-family: var(--font-display);
+    font-weight: 650;
+    font-size: 1.05rem;
+    margin: 0 0 0.6rem;
+  }
+  .tasks {
+    list-style: none;
+    margin: 0 0 0.9rem;
+    padding: 0;
+    display: grid;
+    gap: 0.45rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+  .tasks li {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.5rem;
+    border-radius: 10px;
+    background: var(--bg-elev-2);
+  }
+  .check {
+    flex: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-strong);
+  }
+  .done {
+    text-decoration: line-through;
+    color: var(--text-faint);
+  }
+  .done .check {
+    background: var(--accent-text);
+    border-color: var(--accent-text);
+  }
+  .app-btn {
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.45rem;
+    border-radius: 99px;
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* Growth */
+  .growth {
+    right: 0;
+    top: 0;
+    width: 52%;
+    padding: 1rem 1.1rem 0.9rem;
+    rotate: 3deg;
+    animation-delay: -2.5s;
+    z-index: 1;
+  }
+  .g-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0 0 0.2rem;
+  }
+  .g-value {
+    font-family: var(--font-display);
+    font-weight: 650;
+    font-size: 1.6rem;
+    line-height: 1.1;
+    margin: 0 0 0.6rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .g-delta {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ok);
+    vertical-align: middle;
+  }
+  .spark {
+    width: 100%;
+    height: 56px;
+    overflow: visible;
+  }
+
+  /* Post */
+  .post {
+    right: 6%;
+    bottom: 0;
+    width: 50%;
+    padding: 0.8rem;
+    rotate: -1.5deg;
+    animation-delay: -5s;
+    z-index: 3;
+  }
+  .post-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .avatar {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a8fb0, #0d5b73);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+  }
+  .post-img {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #1a8fb0 0%, #0d5b73 70%);
+  }
+  .sun {
+    position: absolute;
+    right: 18%;
+    top: 18%;
+    width: 18%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #ffd88a;
+    box-shadow: 0 0 24px #ffd88a;
+  }
+  .hill {
+    position: absolute;
+    bottom: -40%;
+    border-radius: 50%;
+    background: #08394a;
+  }
+  .hill-a {
+    left: -20%;
+    width: 90%;
+    height: 80%;
+  }
+  .hill-b {
+    right: -25%;
+    width: 85%;
+    height: 70%;
+    background: #0b4a5e;
+  }
+  .post-meta {
+    display: flex;
+    gap: 0.9rem;
+    margin: 0.6rem 0 0.25rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .caption {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--text);
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 0 -8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .collage {
+      aspect-ratio: 52 / 54;
+    }
+    .tasks,
+    .app-btn,
+    .post-meta,
+    .caption {
+      font-size: 0.62rem;
+    }
+    .g-value {
+      font-size: 1.25rem;
+    }
+    .spark {
+      height: 40px;
+    }
+  }
+</style>

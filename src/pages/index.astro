@@ -1,13 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
-import AgentTerminal from '../components/AgentTerminal.astro';
+import VentureCollage from '../components/VentureCollage.astro';
 import VentureCard from '../components/VentureCard.astro';
 
 const steps = [
-  { n: '01', title: 'Spark', text: 'An idea, a problem, or a story worth telling. Every project starts with people.' },
-  { n: '02', title: 'Agent sprint', text: 'AI agents research, draft, code, and design in parallel — hours, not weeks.' },
-  { n: '03', title: 'Human review', text: 'We curate, edit, and test. Taste and judgment stay firmly human.' },
-  { n: '04', title: 'Ship & learn', text: 'Release, measure, iterate. Agents keep the feedback loop tight.' },
+  { n: '01', title: 'Spark', text: 'An idea, a problem, or a story worth telling. Every project starts with something we care about.' },
+  { n: '02', title: 'Make', text: 'Fast drafts and prototypes, with AI tools where they help.' },
+  { n: '03', title: 'Refine', text: 'We edit, test, and polish until it feels right to us.' },
+  { n: '04', title: 'Ship & learn', text: 'Release it, see what resonates, and keep improving.' },
 ];
 ---
 
@@ -17,14 +17,14 @@ const steps = [
     <div class="glow" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div class="hero-copy">
-        <span class="chip"><span class="pulse-dot"></span> AI-native studio · est. 2026</span>
+        <span class="chip"><span class="pulse-dot"></span> Independent studio · est. 2026</span>
         <h1>
           Small studio.<br />
-          <span class="gradient-text">Big leverage.</span>
+          <span class="gradient-text">Big ideas.</span>
         </h1>
         <p class="lead">
-          mfort is a two-person studio where humans and AI agents build software, grow brands, and create
-          content, together.
+          mfort is a two-person studio building apps, growing brands, and creating content, with modern
+          tools and a lot of curiosity.
         </p>
         <div class="cta">
           <a class="btn btn-primary" href="/contact/">
@@ -38,7 +38,7 @@ const steps = [
         </div>
       </div>
       <div class="hero-visual">
-        <AgentTerminal />
+        <VentureCollage />
       </div>
     </div>
   </section>
@@ -50,20 +50,20 @@ const steps = [
         <span class="eyebrow">What we build</span>
         <h2>Three ventures, one studio.</h2>
         <p class="lead">
-          Each mfort project falls under one of three areas. Agents do the heavy lifting in all of them.
+          Each mfort project falls under one of three areas.
         </p>
       </div>
       <div class="ventures">
         <VentureCard
           kicker="mfort / apps"
           title="Software & Apps"
-          items={['Web apps', 'Mobile', 'Automations', 'Agent tooling']}
+          items={['Web apps', 'Mobile', 'Automations', 'Side projects']}
         >
           <svg slot="icon" viewBox="0 0 24 24" width="24" height="24"
             ><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             ></path></svg
           >
-          Products we use ourselves, designed by people and built quickly with coding agents.
+          Small, useful products we want to use ourselves.
         </VentureCard>
         <VentureCard
           kicker="mfort / growth"
@@ -74,7 +74,7 @@ const steps = [
             ><path d="M3 17l6-6 4 4 8-8M15 7h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             ></path></svg
           >
-          Data-driven growth where agents test copy, creative, and channels, and the numbers decide.
+          Brand building and campaigns where we test ideas and let the numbers decide.
         </VentureCard>
         <VentureCard
           kicker="mfort / studio"
@@ -85,7 +85,7 @@ const steps = [
             ><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11ZM10 9v6l5-3-5-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"
             ></path></svg
           >
-          Stories and posts made with AI-assisted production, but always in our own voice.
+          Stories, videos, and posts, always in our own voice.
         </VentureCard>
       </div>
     </div>
@@ -95,8 +95,8 @@ const steps = [
   <section class="section process-section">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">The loop</span>
-        <h2>Humans steer. Agents accelerate.</h2>
+        <span class="eyebrow">Our process</span>
+        <h2>From idea to launch.</h2>
       </div>
       <ol class="steps">
         {
@@ -118,7 +118,7 @@ const steps = [
       <div class="cta-panel reveal">
         <div>
           <h2>Have an idea worth building?</h2>
-          <p class="muted">We're always up for collaborating, trading notes, or just talking shop about AI-native work.</p>
+          <p class="muted">We're always up for collaborating, trading notes, or just talking shop about building things online.</p>
         </div>
         <a class="btn btn-primary" href="/contact/">Get in touch</a>
       </div>
