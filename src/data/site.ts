@@ -3,10 +3,11 @@
 
 export const site = {
   name: 'mfort',
-  legalName: 'mfort, LLC',
+  // Change to 'mfort, LLC' once the LLC is formally registered.
+  legalName: 'mfort',
   url: 'https://mfort.dev',
   description:
-    'mfort, LLC is a small, family-run company for software, digital marketing, and content projects.',
+    'mfort is a small, family-run company for software, digital marketing, and content projects.',
   email: 'hello@mfort.dev',
 };
 
