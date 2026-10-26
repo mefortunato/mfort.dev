@@ -5,16 +5,16 @@ export const site = {
   name: 'mfort',
   legalName: 'mfort, LLC',
   url: 'https://mfort.dev',
-  tagline: 'Small studio. Big ideas.',
   description:
-    'mfort is a two-person studio building apps, growing brands, and creating content.',
+    'mfort, LLC is a small, family-run company for software, digital marketing, and content projects.',
   email: 'hello@mfort.dev',
 };
 
-export const nav = [
-  { href: '/', label: 'Home' },
-  { href: '/about/', label: 'About' },
-  { href: '/contact/', label: 'Contact' },
+// What the company does, shown as a short list on the home page.
+export const activities = [
+  { title: 'Software & apps', text: 'Web and mobile applications.' },
+  { title: 'Digital marketing', text: 'Branding, websites, and online campaigns.' },
+  { title: 'Social media & content', text: 'Writing, video, and design for social platforms.' },
 ];
 
 export type SocialKey = 'github' | 'x' | 'instagram' | 'tiktok' | 'linkedin' | 'youtube';

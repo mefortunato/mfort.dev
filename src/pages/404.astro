@@ -3,17 +3,11 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base title="Not found" description="This page doesn't exist.">
-  <section class="section">
-    <div class="container nf">
-      <p class="code" aria-hidden="true">404</p>
-      <h1>Page not found.</h1>
-      <p class="lead">The page you're looking for has moved, or it never existed.</p>
-      <div class="links">
-        <a class="btn btn-primary" href="/">Back to home</a>
-        <a class="btn btn-ghost" href="/about/">About</a>
-        <a class="btn btn-ghost" href="/contact/">Contact</a>
-      </div>
-    </div>
+  <section class="container nf">
+    <p class="code" aria-hidden="true">404</p>
+    <h1>Page not found.</h1>
+    <p class="msg">The page you're looking for has moved, or it never existed.</p>
+    <a class="btn btn-primary" href="/">Back to home</a>
   </section>
 </Base>
 
@@ -22,21 +16,21 @@ import Base from '../layouts/Base.astro';
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    min-height: 55vh;
-    justify-content: center;
+    padding-block: clamp(2rem, 10vh, 6rem) 2rem;
   }
   .code {
     font-family: var(--font-mono);
-    font-size: clamp(4rem, 14vw, 8rem);
+    font-size: clamp(3rem, 12vw, 5rem);
     line-height: 1;
     font-weight: 700;
     margin: 0 0 1rem;
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--accent-text);
+    color: var(--accent-text);
   }
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+  h1 {
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
+  }
+  .msg {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
   }
 </style>

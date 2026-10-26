@@ -1,259 +1,121 @@
 ---
 import Base from '../layouts/Base.astro';
-import VentureCollage from '../components/VentureCollage.astro';
-import VentureCard from '../components/VentureCard.astro';
-
-const steps = [
-  { n: '01', title: 'Spark', text: 'An idea, a problem, or a story worth telling. Every project starts with something we care about.' },
-  { n: '02', title: 'Make', text: 'Fast drafts and prototypes, with AI tools where they help.' },
-  { n: '03', title: 'Refine', text: 'We edit, test, and polish until it feels right to us.' },
-  { n: '04', title: 'Ship & learn', text: 'Release it, see what resonates, and keep improving.' },
-];
+import Logo from '../components/Logo.astro';
+import SocialIcon from '../components/SocialIcon.astro';
+import { activeSocials, activities, site } from '../data/site';
 ---
 
 <Base>
-  <!-- Hero -->
-  <section class="hero">
-    <div class="glow" aria-hidden="true"></div>
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <span class="chip"><span class="pulse-dot"></span> Independent studio · est. 2026</span>
-        <h1>
-          Small studio.<br />
-          <span class="gradient-text">Big ideas.</span>
-        </h1>
-        <p class="lead">
-          mfort is a two-person studio building apps, growing brands, and creating content, with modern
-          tools and a lot of curiosity.
-        </p>
-        <div class="cta">
-          <a class="btn btn-primary" href="/contact/">
-            Start a conversation
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"
-              ><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              ></path></svg
-            >
-          </a>
-          <a class="btn btn-ghost" href="/about/">How we work</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <VentureCollage />
-      </div>
+  <section class="container page">
+    <div class="identity">
+      <Logo size={48} />
+      <h1>{site.legalName}</h1>
     </div>
-  </section>
 
-  <!-- Ventures -->
-  <section class="section" id="ventures">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">What we build</span>
-        <h2>Three ventures, one studio.</h2>
-        <p class="lead">
-          Each mfort project falls under one of three areas.
-        </p>
-      </div>
-      <div class="ventures">
-        <VentureCard
-          kicker="mfort / apps"
-          title="Software & Apps"
-          items={['Web apps', 'Mobile', 'Automations', 'Side projects']}
-        >
-          <svg slot="icon" viewBox="0 0 24 24" width="24" height="24"
-            ><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            ></path></svg
-          >
-          Small, useful products we want to use ourselves.
-        </VentureCard>
-        <VentureCard
-          kicker="mfort / growth"
-          title="Digital Marketing"
-          items={['Brand', 'SEO', 'Campaigns', 'Analytics']}
-        >
-          <svg slot="icon" viewBox="0 0 24 24" width="24" height="24"
-            ><path d="M3 17l6-6 4 4 8-8M15 7h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            ></path></svg
-          >
-          Brand building and campaigns where we test ideas and let the numbers decide.
-        </VentureCard>
-        <VentureCard
-          kicker="mfort / studio"
-          title="Social & Content"
-          items={['Short-form video', 'Writing', 'Design', 'Community']}
-        >
-          <svg slot="icon" viewBox="0 0 24 24" width="24" height="24"
-            ><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11ZM10 9v6l5-3-5-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"
-            ></path></svg
-          >
-          Stories, videos, and posts, always in our own voice.
-        </VentureCard>
-      </div>
-    </div>
-  </section>
+    <p class="summary">
+      A small, family-run company that is home to our projects in software, digital marketing, and social
+      media content.
+    </p>
 
-  <!-- Process -->
-  <section class="section process-section">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Our process</span>
-        <h2>From idea to launch.</h2>
-      </div>
-      <ol class="steps">
+    <section aria-labelledby="work-heading">
+      <h2 id="work-heading">What we do</h2>
+      <dl class="activities">
         {
-          steps.map((s) => (
-            <li class="step reveal">
-              <span class="n">{s.n}</span>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
+          activities.map((a) => (
+            <div>
+              <dt>{a.title}</dt>
+              <dd>{a.text}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <ul class="contact">
+        <li>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </li>
+        {
+          activeSocials.map((s) => (
+            <li>
+              <a href={s.href} target="_blank" rel="noopener noreferrer">
+                <SocialIcon name={s.key} size={16} />
+                {s.label}
+              </a>
             </li>
           ))
         }
-      </ol>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section">
-    <div class="container">
-      <div class="cta-panel reveal">
-        <div>
-          <h2>Have an idea worth building?</h2>
-          <p class="muted">We're always up for collaborating, trading notes, or just talking shop about building things online.</p>
-        </div>
-        <a class="btn btn-primary" href="/contact/">Get in touch</a>
-      </div>
-    </div>
+      </ul>
+    </section>
   </section>
 </Base>
 
 <style>
-  .hero {
-    position: relative;
-    padding-block: clamp(3.5rem, 9vw, 7rem) clamp(3rem, 7vw, 5rem);
-    overflow: hidden;
+  .page {
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+    padding-block: clamp(2rem, 10vh, 6rem) 2rem;
   }
-  .glow {
-    position: absolute;
-    inset: -20% -10% auto;
-    height: 720px;
-    background:
-      radial-gradient(40% 50% at 70% 35%, var(--accent-glow), transparent 70%),
-      radial-gradient(30% 40% at 15% 20%, rgb(13 91 115 / 0.25), transparent 70%);
-    filter: blur(20px);
-    pointer-events: none;
-  }
-  .hero-grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1.05fr 1fr;
-    gap: clamp(2rem, 5vw, 4rem);
+  .identity {
+    display: flex;
     align-items: center;
+    gap: 1rem;
   }
-  .hero-copy .chip {
-    margin-bottom: 1.5rem;
+  h1 {
+    margin: 0;
+    font-size: clamp(2rem, 6vw, 2.75rem);
   }
-  .hero-copy .lead {
-    margin-bottom: 2rem;
+  .summary {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--text-muted);
   }
-  .cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+  h2 {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    margin-bottom: 1rem;
   }
-  .hero-visual {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .section-head {
-    max-width: 680px;
-    margin-bottom: clamp(2rem, 5vw, 3rem);
-  }
-  .ventures {
+  .activities {
+    margin: 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    border-top: 1px solid var(--border);
   }
-
-  .process-section {
-    border-block: 1px solid var(--border);
-    background: linear-gradient(180deg, transparent, var(--accent-soft), transparent);
+  .activities > div {
+    display: grid;
+    grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+    gap: 0.25rem 1.5rem;
+    padding-block: 0.85rem;
+    border-bottom: 1px solid var(--border);
   }
-  .steps {
+  dt {
+    font-weight: 600;
+  }
+  dd {
+    margin: 0;
+    color: var(--text-muted);
+  }
+  .contact {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-    counter-reset: step;
-  }
-  .step {
-    position: relative;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--border-strong);
-  }
-  .step::before {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: 0;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--accent-text);
-    box-shadow: 0 0 12px var(--accent-glow);
-  }
-  .step .n {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--accent-text);
-  }
-  .step h3 {
-    margin-top: 0.4rem;
-  }
-  .step p {
-    color: var(--text-muted);
-    font-size: 0.97rem;
-  }
-
-  .cta-panel {
     display: flex;
     flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+  }
+  .contact a {
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding: clamp(1.75rem, 4vw, 3rem);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-strong);
-    background:
-      radial-gradient(60% 120% at 100% 0%, var(--accent-glow), transparent 60%),
-      var(--bg-elev);
+    gap: 0.45rem;
   }
-  .cta-panel h2 {
-    margin-bottom: 0.3em;
-  }
-  .cta-panel p {
-    margin: 0;
-    max-width: 52ch;
-  }
-
-  @media (max-width: 960px) {
-    .hero-grid {
-      grid-template-columns: 1fr;
-    }
-    .hero-visual {
-      justify-content: flex-start;
-    }
-    .ventures {
-      grid-template-columns: 1fr;
-    }
-    .steps {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (max-width: 560px) {
-    .steps {
+  @media (max-width: 520px) {
+    .activities > div {
       grid-template-columns: 1fr;
     }
   }

@@ -1,87 +1,22 @@
 ---
-import SocialIcon from './SocialIcon.astro';
-import { activeSocials, site } from '../data/site';
+import { site } from '../data/site';
 
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <div class="container inner">
-    <div class="left">
-      <span class="chip"><span class="pulse-dot"></span> Made by two humans, with a little help from AI</span>
-      <p class="copy">© {year} {site.legalName}. All rights reserved.</p>
-    </div>
-    <ul class="socials" aria-label="Social links">
-      {
-        activeSocials.map((s) => (
-          <li>
-            <a href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer">
-              <SocialIcon name={s.key} size={18} />
-            </a>
-          </li>
-        ))
-      }
-      <li>
-        <a href={`mailto:${site.email}`} aria-label="Email">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-            <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"
-            ></rect>
-            <path d="m3.5 6.5 8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"
-            ></path>
-          </svg>
-        </a>
-      </li>
-    </ul>
+  <div class="container">
+    <p>© {year} {site.legalName}</p>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    border-top: 1px solid var(--border);
-    background: color-mix(in srgb, var(--bg) 85%, transparent);
     padding-block: 2rem;
   }
-  .inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.25rem;
-  }
-  .left {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.75rem 1.25rem;
-  }
-  .copy {
+  p {
     margin: 0;
     font-size: 0.875rem;
     color: var(--text-faint);
-  }
-  .socials {
-    display: flex;
-    gap: 0.5rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .socials a {
-    display: grid;
-    place-items: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-    transition:
-      color 0.2s,
-      border-color 0.2s,
-      background-color 0.2s;
-  }
-  .socials a:hover {
-    color: var(--text);
-    border-color: var(--accent-text);
-    background: var(--accent-soft);
   }
 </style>

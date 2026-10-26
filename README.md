@@ -1,6 +1,6 @@
 # mfort.dev
 
-Website for **mfort, LLC**: a small, AI-native studio for software, digital marketing, and social content.
+Website for **mfort, LLC**: a simple landing page for a small, family-run company covering software, digital marketing, and social content.
 
 Built with [Astro](https://astro.build) as a fully static site and deployed to GitHub Pages at
 [mfort.dev](https://mfort.dev) by GitHub Actions.
@@ -20,12 +20,9 @@ npm run preview   # serve the built site
 
 | What | Where |
 | --- | --- |
-| Name, tagline, email, social links | `src/data/site.ts` (leave a social `href` empty to hide it) |
-| Home page | `src/pages/index.astro` |
-| About (founder names/bios, principles) | `src/pages/about.astro` |
-| Contact | `src/pages/contact.astro` |
+| Company name, description, activities, email, social links | `src/data/site.ts` (leave a social `href` empty to hide it) |
+| Landing page layout | `src/pages/index.astro` |
 | Colors, fonts, theme tokens | `src/styles/global.css` |
-| Hero illustration (app / growth / social cards) | `src/components/VentureCollage.astro` |
 
 The accent color is `#0d5b73`. Dark is the default theme. The header toggle switches to light and
 remembers the choice in `localStorage`.
