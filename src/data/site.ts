@@ -20,7 +20,7 @@ export const activities = [
 export type SocialKey = 'github' | 'x' | 'instagram' | 'tiktok' | 'linkedin' | 'youtube';
 
 export const socials: { key: SocialKey; label: string; href: string }[] = [
-  { key: 'github', label: 'GitHub', href: 'https://github.com/mefortunato' },
+  { key: 'github', label: 'GitHub', href: '' },
   { key: 'x', label: 'X', href: '' },
   { key: 'instagram', label: 'Instagram', href: '' },
   { key: 'tiktok', label: 'TikTok', href: '' },
