@@ -7,9 +7,12 @@ import { activeSocials, activities, site } from '../data/site';
 
 <Base>
   <section class="container page">
-    <div class="identity">
-      <Logo size={48} />
-      <h1>{site.legalName}</h1>
+    <div class="intro">
+      <span class="chip"><span class="pulse-dot"></span> Independent studio · est. 2026</span>
+      <div class="identity">
+        <Logo size={48} />
+        <h1>{site.legalName}</h1>
+      </div>
     </div>
 
     <p class="summary">
@@ -58,6 +61,12 @@ import { activeSocials, activities, site } from '../data/site';
     flex-direction: column;
     gap: 2.75rem;
     padding-block: clamp(2rem, 10vh, 6rem) 2rem;
+  }
+  .intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
   }
   .identity {
     display: flex;

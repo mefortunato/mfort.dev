@@ -30,6 +30,7 @@
   --accent-text: #3fb4d6;
   --accent-soft: rgb(13 91 115 / 0.28);
   --accent-glow: rgb(26 143 176 / 0.35);
+  --grid-line: rgb(127 224 247 / 0.045);
   --ok: #5fd7a0;
   --shadow: 0 20px 60px -20px rgb(0 0 0 / 0.6);
 }
@@ -47,6 +48,7 @@
   --accent-text: #0d5b73;
   --accent-soft: rgb(13 91 115 / 0.09);
   --accent-glow: rgb(13 91 115 / 0.16);
+  --grid-line: rgb(13 91 115 / 0.06);
   --ok: #138a5a;
   --shadow: 0 20px 50px -24px rgb(13 52 64 / 0.25);
 }
@@ -69,6 +71,14 @@ body {
   display: flex;
   flex-direction: column;
   background-color: var(--bg);
+  background-image:
+    radial-gradient(60% 420px at 70% 0%, var(--accent-glow), transparent 70%),
+    radial-gradient(40% 360px at 10% 0%, var(--accent-soft), transparent 70%),
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: auto, auto, 48px 48px, 48px 48px;
+  background-position: center top;
+  background-repeat: no-repeat, no-repeat, repeat, repeat;
   color: var(--text);
   font-family: var(--font-sans);
   font-size: 1.0625rem;
@@ -201,5 +211,39 @@ svg {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Status chip ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--accent-soft);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ok);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(95 215 160 / 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgb(95 215 160 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(95 215 160 / 0);
   }
 }
