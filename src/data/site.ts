@@ -7,11 +7,11 @@ export const site = {
   legalName: 'mfort',
   url: 'https://mfort.dev',
   description:
-    'mfort is a small, family-run company for software, digital marketing, and content projects.',
+    'mfort is a small, family-run studio for software, digital marketing, and content projects.',
   email: 'hello@mfort.dev',
 };
 
-// What the company does, shown as a short list on the home page.
+// What the studio does, shown as a short list on the home page.
 export const activities = [
   { title: 'Software & apps', text: 'Web and mobile applications.' },
   { title: 'Digital marketing', text: 'Branding, websites, and online campaigns.' },

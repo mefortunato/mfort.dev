@@ -1,6 +1,6 @@
 # mfort.dev
 
-Website for **mfort**: a simple landing page for a small, family-run company covering software, digital marketing, and social content.
+Website for **mfort**: a simple landing page for a small, family-run studio covering software, digital marketing, and social content.
 
 Built with [Astro](https://astro.build) as a fully static site and deployed to GitHub Pages at
 [mfort.dev](https://mfort.dev) by GitHub Actions.
